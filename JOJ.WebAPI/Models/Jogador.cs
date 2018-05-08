@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using static JOJ.Dominio.Constantes;
-namespace JOJ.Dominio
+using System.Linq;
+using System.Web;
+
+namespace JOJ.WebAPI.Models
 {
     public class Jogador
     {
@@ -19,13 +17,13 @@ namespace JOJ.Dominio
 
         private int codigo;
         private string nome;
-        private PosicaoJogador posicao;
-        private TipoJogador tipo;
+        private Constantes.PosicaoJogador posicao;
+        private Constantes.TipoJogador tipo;
 
         public int Codigo { get => codigo; set => codigo = value; }
         public string Nome { get => nome; set => nome = value; }
-        public PosicaoJogador Posicao { get => posicao; set => posicao = value; }
-        public TipoJogador Tipo { get => tipo; set => tipo = value; }
+        public Constantes.PosicaoJogador Posicao { get => posicao; set => posicao = value; }
+        public Constantes.TipoJogador Tipo { get => tipo; set => tipo = value; }
 
         #endregion
 
@@ -56,8 +54,8 @@ namespace JOJ.Dominio
                         {
                             codigo = int.Parse(cols[0]),
                             nome = cols[1],
-                            posicao = (PosicaoJogador)int.Parse(cols[2]),
-                            tipo = (TipoJogador)int.Parse(cols[3])
+                            posicao = (Constantes.PosicaoJogador)int.Parse(cols[2]),
+                            tipo = (Constantes.TipoJogador)int.Parse(cols[3])
                         };
 
                         listJogadores.Add(jogador);
@@ -79,7 +77,7 @@ namespace JOJ.Dominio
             if (listJogadores.Count == 0)
                 return 1;
 
-            return listJogadores.Max(x=> x.codigo) + 1;
+            return listJogadores.Max(x => x.codigo) + 1;
         }
         public Boolean Cadastro(int codigo, string nome, int posicao, int tipo)
         {
@@ -92,7 +90,7 @@ namespace JOJ.Dominio
                 return true;
             }
             else
-            return false;
+                return false;
         }
     }
 }

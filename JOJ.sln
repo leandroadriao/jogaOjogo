@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JOJ.Dominio", "JOJ.Dominio\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JOJ.Testes", "JOJ.Testes\JOJ.Testes.csproj", "{AD4C6062-B211-4049-8078-894AB56EE61E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JOJ.WebAPI", "JOJ.WebAPI\JOJ.WebAPI.csproj", "{E705AC4B-0288-4835-9945-42554FD41DBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AD4C6062-B211-4049-8078-894AB56EE61E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD4C6062-B211-4049-8078-894AB56EE61E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD4C6062-B211-4049-8078-894AB56EE61E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E705AC4B-0288-4835-9945-42554FD41DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E705AC4B-0288-4835-9945-42554FD41DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E705AC4B-0288-4835-9945-42554FD41DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E705AC4B-0288-4835-9945-42554FD41DBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
