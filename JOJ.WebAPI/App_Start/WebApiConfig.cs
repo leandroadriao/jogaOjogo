@@ -20,10 +20,11 @@ namespace JOJ.WebAPI
                 defaults: new { id = RouteParameter.Optional }
             );
             config.Routes.MapHttpRoute(
-                name: "JogadorApi",
-                routeTemplate: "api/Jogador/{Nome}/{Posicao}/{Tipo}",
-                defaults: new { controller = "Jogador" }
+                name: "ObterTodosJogadoresApi",
+                routeTemplate: "api/Jogador/RegisterJogador",
+                 defaults: new { controller = "Jogador" }
             );
+
         }
     }
 }

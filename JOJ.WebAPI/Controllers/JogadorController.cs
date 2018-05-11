@@ -10,6 +10,8 @@ namespace JOJ.WebAPI.Controllers
     public class JogadorController : ApiController
     {
         // GET: api/Jogador
+
+        [HttpGet]
         public IEnumerable<Models.Jogador> Get()
         {
             return new Models.Jogador().ObterTodosJogadores();
@@ -21,11 +23,14 @@ namespace JOJ.WebAPI.Controllers
             return "value";
         }
 
-        // POST: api/Jogador
-        [HttpPost, Route("RegisterPerson")]
-        public string Post(string Nome, int Posicao, int Tipo)
+        [HttpPost]
+        [ActionName("RegisterJogador")]
+        public Boolean Post(string Nome, int Posicao, int Tipo)
         {
-            return "value";
+            int sequencial = 0;
+            Models.Jogador joga = new Models.Jogador();
+            sequencial = joga.BuscarProximoSequencial();
+            return joga.Cadastro(sequencial, Nome, Posicao, Tipo);
         }
 
         // PUT: api/Jogador/5

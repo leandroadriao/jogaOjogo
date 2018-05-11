@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+ 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JOJ.APP.CadastroJogador">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="Nome" Grid.Row="0" HorizontalOptions="Start"
+                   TextColor="White" FontAttributes="Bold" FontSize="Medium" />
+                <Entry x:Name="etyNome" Grid.Row="1" VerticalOptions="Center" 
+                       Margin="5,0" BackgroundColor="DarkSlateGray" TextColor="White"  />
+                <Label Text="Posição" Grid.Row="2" HorizontalOptions="Start"
+                   TextColor="White" FontAttributes="Bold" FontSize="Medium" />
+                    
+                <Label Text="Tipo" Grid.Row="4" HorizontalOptions="Start"
+                   TextColor="White" FontAttributes="Bold" FontSize="Medium" />
+            </Grid>
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
