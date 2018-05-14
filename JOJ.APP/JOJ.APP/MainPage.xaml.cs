@@ -15,7 +15,7 @@ namespace JOJ.APP
 		}
         async void OnNavigateButtonClicked(object sender, EventArgs e)
         {
-            var secondPage = new MontaTime();
+            var secondPage = new CadastroJogador();
             await Navigation.PushAsync(secondPage);
         }
 

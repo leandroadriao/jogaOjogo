@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
- 
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:customControls="clr-namespace:JOJ.APP;assembly=JOJ.APP"
              x:Class="JOJ.APP.CadastroJogador">
     <ContentPage.Content>
         <StackLayout>
@@ -13,18 +15,36 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Label Text="Nome" Grid.Row="0" HorizontalOptions="Start"
-                   TextColor="White" FontAttributes="Bold" FontSize="Medium" />
+                   TextColor="DarkSlateGray" FontAttributes="Bold" FontSize="Medium" />
                 <Entry x:Name="etyNome" Grid.Row="1" VerticalOptions="Center" 
-                       Margin="5,0" BackgroundColor="DarkSlateGray" TextColor="White"  />
+                       Margin="5,0" BackgroundColor="Transparent" TextColor="White"  />
                 <Label Text="Posição" Grid.Row="2" HorizontalOptions="Start"
-                   TextColor="White" FontAttributes="Bold" FontSize="Medium" />
-                    
+                   TextColor="DarkSlateGray" FontAttributes="Bold" FontSize="Medium" />
+                <customControls:CustomPicker WidthRequest="250" HorizontalOptions="FillAndExpand" Grid.Row="3">
+                    <Picker.Items>
+                        <x:String>Ataque</x:String>
+                        <x:String>Defesa</x:String>
+                    </Picker.Items>
+                    <Picker.SelectedIndex>0</Picker.SelectedIndex>
+                </customControls:CustomPicker>
                 <Label Text="Tipo" Grid.Row="4" HorizontalOptions="Start"
-                   TextColor="White" FontAttributes="Bold" FontSize="Medium" />
+                   TextColor="DarkSlateGray" FontAttributes="Bold" FontSize="Medium" />
+                <customControls:CustomPicker WidthRequest="250" HorizontalOptions="FillAndExpand" Grid.Row="5">
+                    <Picker.Items>
+                        <x:String>Mensal</x:String>
+                        <x:String>Avulso</x:String>
+                    </Picker.Items>
+                    <Picker.SelectedIndex>0</Picker.SelectedIndex>
+                </customControls:CustomPicker>
+
             </Grid>
-           
+            <controls:CheckBox x:Name="chehs" Checked="True" DefaultText="Leandro"  />
+
+            <Button x:Name="btnJogadores" Text="Cadastrar" Clicked="OnNavigateButtonClicked" />
+            <Button x:Name="navigateButton" Text="Voltar" Clicked="OnNavigateButtonClicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -15,6 +15,11 @@ namespace JOJ.APP
 		public CadastroJogador ()
 		{
 			InitializeComponent ();
+            
 		}
-	}
+        async void OnNavigateButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+        }
+    }
 }
