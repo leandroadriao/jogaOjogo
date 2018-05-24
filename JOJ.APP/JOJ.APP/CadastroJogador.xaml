@@ -42,7 +42,12 @@
 
             </Grid>
             <controls:CheckBox x:Name="chehs" Checked="True" DefaultText="Leandro"  />
-
+            <Picker x:Name="pckSexo" HorizontalOptions="FillAndExpand" Title="Selecione o Sexo:">
+                <Picker.Items>
+                    <x:String>Masculino</x:String>
+                    <x:String>Feminino</x:String>
+                </Picker.Items>
+            </Picker>
             <Button x:Name="btnJogadores" Text="Cadastrar" Clicked="OnNavigateButtonClicked" />
             <Button x:Name="navigateButton" Text="Voltar" Clicked="OnNavigateButtonClicked" />
         </StackLayout>

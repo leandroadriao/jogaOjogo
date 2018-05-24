@@ -84,8 +84,8 @@ namespace JOJ.Testes
 
                 //Console.WriteLine(string.Format("{0}-{1}", obj.Nome, obj.Posicao.ToString()));
             }
-
-            while (!BalancearTimes(times))
+            int qtdeExe = 1;
+            while (!BalancearTimes(times) && qtdeExe != 10001)
             {
                 // Console.WriteLine("Tentativa");
                 // Shuffle(listaJogadores);
@@ -98,11 +98,13 @@ namespace JOJ.Testes
                 times[2].Add(times[1][1]);
                 times[1].RemoveAt(0);
                 times[1].RemoveAt(1);
+                qtdeExe++;
 
             }
-
+            Console.WriteLine(string.Format("qtdeExe:{0}", qtdeExe));
             foreach (var obj in times)
             {
+                
                 Console.WriteLine(string.Format("Time:{0}", obj.Key));
 
                 foreach (var values in obj.Value)

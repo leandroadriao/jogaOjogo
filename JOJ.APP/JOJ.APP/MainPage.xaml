@@ -7,7 +7,8 @@
     	<Label Text="Welcome to jOj By:Adrião!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
-       
+        <Button x:Name="btnJasaogadores" Text="Validation" Clicked="OnValidationButtonClicked" />
+
         <Button x:Name="btnJogadores" Text="Jogadores" Clicked="OnNavigateButtonClicked" />
         <Button x:Name="bntMontaTime" Text="Monta Time" Clicked="OnNavigateMontaTime" />
     </StackLayout>

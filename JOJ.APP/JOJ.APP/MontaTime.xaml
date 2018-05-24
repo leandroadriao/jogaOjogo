@@ -1,13 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              x:Class="JOJ.APP.MontaTime">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Monta Time!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Button x:Name="navigateButton" Text="Previous Page" Clicked="OnNavigateButtonClicked" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Label Text="Qtde Jogadores" Grid.Row="0" HorizontalOptions="Start"
+                   TextColor="DarkSlateGray" FontAttributes="Bold" FontSize="Medium" />
+            <Entry x:Name="etyQtdeJogadores" Grid.Row="1" VerticalOptions="Center" 
+                       Margin="5,0" BackgroundColor="Transparent" TextColor="Black"  />
+            <StackLayout Grid.Row="2">
+                <ListView x:Name="lstNomes"  >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <controls:CheckBox x:Name="chehs" Checked="{Binding Selected, Mode=TwoWay}" DefaultText="{Binding Nome}"  />
+                                    <controls:ExtendedListView
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+               
+            </StackLayout>
+            <Button x:Name="bntMontaTime" Text="Tira Time" Clicked="bntMontaTimeButtonClicked" Grid.Row="3"/>
+            <Button x:Name="navigateButton" Text="Previous Page" Clicked="OnNavigateButtonClicked" Grid.Row="4"/>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -26,6 +26,8 @@ namespace JOJ.APP.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::PCLStorage.Resource.String.ApplicationName = global::JOJ.APP.Droid.Resource.String.ApplicationName;
+			global::PCLStorage.Resource.String.Hello = global::JOJ.APP.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::JOJ.APP.Droid.Resource.Attribute.actionBarSize;
 			global::XLabs.Forms.Resource.Animation.abc_fade_in = global::JOJ.APP.Droid.Resource.Animation.abc_fade_in;
 			global::XLabs.Forms.Resource.Animation.abc_fade_out = global::JOJ.APP.Droid.Resource.Animation.abc_fade_out;
