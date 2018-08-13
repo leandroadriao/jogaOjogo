@@ -61,6 +61,7 @@ namespace JOJ.APP
             //    }
 
             //}
+            
             BindingContext = _times;
             NewPartsListView.GroupDisplayBinding = new Binding("Nome");
         }

@@ -23,7 +23,7 @@
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal">
                                     <controls:CheckBox x:Name="chehs" Checked="{Binding Selected, Mode=TwoWay}" DefaultText="{Binding Nome}"  />
-                                    <controls:ExtendedListView
+                                    <!--<controls:ExtendedListView-->
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>

@@ -1,115 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:JOJ.APP;assembly=JOJ.APP"
-             xmlns:xf="clr-namespace:Xamarin.Forms"
-             x:Class="JOJ.APP.Times"
-             x:Name="YourPageName">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="#404040" />
+            </Style>
+            <Style x:Key="fieldStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="Margin" Value="10,0,0,0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <ListView 
-            x:Uid="NewPartsListView"
-            x:Name="NewPartsListView"  
-            
-            ItemsSource="{Binding ListaTimes}" IsGroupingEnabled="True">
-                <ListView.GroupHeaderTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <!--<ContentView Padding="10,0,0,0">-->
-                                <Label Text="{Binding Time.Nome}" VerticalOptions="Center"/>
-                                <!--<ContentView.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={x:Reference YourPageName}, Path=BindingContext.Time}"                                      CommandParameter="{Binding .}"/>
-                                </ContentView.GestureRecognizers>
-                            </ContentView>-->
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.GroupHeaderTemplate>
-                <ListView.ItemTemplate>
-                    <DataTemplate >
-                        <TextCell Text="{Binding Nome}"/>
-                        <!--<ViewCell x:Name="NewPartViewCell" >
-                            <ViewCell.View  >
-                                <Grid  >
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                       
-                                    </Grid.RowDefinitions>
-                                    --><!--<Label x:Name="textBlock" x:Uid="PartTypeTextblock" Text="{Binding Nome}" Grid.Row="0" />
-                                    <Label x:Name="textBlock1" x:Uid="PartTypeTextblock" Text="{Binding Nome}" Grid.Row="1" />>--><!--
-                                    <Label x:Name="textBlock" x:Uid="PartTypeTextblock" Text="{Binding Time.Nome}" Grid.Row="0" />
-                                    --><!--<ListView  x:Name="ListBoxMaintenance"  ItemsSource="{Binding Jogadores}" Grid.Row="3">
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <ViewCell >
-                                                    <Grid>
-                                                        <StackLayout
-                                                            Orientation="Horizontal"
-                                                            HorizontalOptions="Start">
-                                                            -->
-                                    <!--<Label 
-                                                            x:Uid="PanelTextblock" 
-                                                            Margin="10,0,0,0"
-                                                            Text="{Binding Codigo}"  
-                                                            LineBreakMode="WordWrap" />-->
-                                    <!--
-                                                            <Label 
-                                                            x:Uid="PartTextblock" 
-                                                            Margin="10,0,0,0"
-                                                            Text="{Binding Nome}" />
-                                                            <Label 
-                                                            x:Uid="PartTextblock" 
-                                                            Margin="10,0,0,0"
-                                                            Text="TESTE" />
-                                                        </StackLayout>
-                                                    </Grid>
-                                                </ViewCell>
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>--><!--
-                                </Grid>
-                            </ViewCell.View>
-                        </ViewCell>-->
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <!--<ListView x:Name="lst"
-                  Margin="5,10,5,10"
-                  SeparatorVisibility="Default"
-                  SeparatorColor="Gray"
-                  ItemsSource="{Binding Path=Grafico.Attributes}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
+        <StackLayout>
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout x:Name="ListaTimes"  Padding="10,10,10,10" HorizontalOptions="Start">
+                    <Label Text="Time: 1" Style="{StaticResource labelStyle}" />
+                    <Label Text="Leandro" Style="{StaticResource fieldStyle}" />
 
-                        <ViewCell >
-                            <StackLayout Orientation="Horizontal" Spacing="1" Margin="5" Padding="2">
-                                <Label Text="{Binding Key, StringFormat='Time: {0}'}" HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="End" FontAttributes="Bold" />
-                                -->
-            <!--<Label Text="{Binding Value[0].Codigo}"/>
-                                <Label Text="{Binding Value[0].Nome}"/>-->
-            <!--
-                                <ListView ItemsSource="{Binding Path=Value}" x:Name="lstValue" 
-                                      SeparatorVisibility="Default"
-                                      SeparatorColor="Gray">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackLayout>
-
-                                                <Label Text="{Binding Nome}"/>
-
-                                                <Label Text="VALUE"/>
-                                            </StackLayout>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                            </StackLayout>
-
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
+                </StackLayout>
+            </ScrollView>
             <Button x:Name="navigateButton" Text="Previous Page" Clicked="OnNavigateButtonClicked" Grid.Row="4"/>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
