@@ -1,0 +1,516 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        p {
+            color: #333;
+            line-height: 27px;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            padding: 30px 4% 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-bottom: 2px solid #333;
+            margin: 10px 0;
+        }
+
+            table td,
+            table th {
+                border: 1px solid #d5d5d5;
+            }
+
+        th {
+            white-space: nowrap;
+            padding: 10px 5px;
+        }
+
+        table p {
+            padding: 5px 10px;
+            margin: 0;
+        }
+
+        .bg-light {
+            background: #f4f4f4;
+        }
+
+        .bg-dark {
+            background: #dadada;
+        }
+
+        label {
+            width: 24px;
+            height: 24px;
+            display: block;
+            margin: 0 auto;
+            border: 2px solid #333;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .check {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            transition: background .35s;
+            position: absolute;
+            top: 0;
+        }
+
+            .check::after {
+                content: '';
+                display: inline-block;
+                width: 8px;
+                height: 4px;
+                border: 0;
+                position: absolute;
+                top: 22%;
+                left: 55%;
+                transform: rotate(-45deg) translate(-50%, -50%);
+                transition: border .35s;
+                margin: 0 auto;
+            }
+
+        label input {
+            opacity: 0;
+        }
+
+        input:checked + .check {
+            background: #333;
+            transition: background .35s;
+        }
+
+            input:checked + .check::after {
+                border: 3px solid #fff;
+                border-top: 0;
+                border-right: 0;
+                transition: border .35s;
+            }
+
+        .content-center {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #6cf;
+            color: #fff;
+            border: 0;
+            font-size: 21px;
+            letter-spacing: 3px;
+            margin: 20px auto 40px;
+            display: block;
+        }
+
+        .modal {
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #c5c5c5;
+            border-radius: 5px;
+            color: #333;
+            position: fixed;
+            z-index: 1;
+            width: 98%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            display: none;
+        }
+
+            .modal p {
+                text-align: center;
+            }
+
+            .modal button {
+                margin: 0 auto;
+            }
+
+            .modal.show {
+                display: block;
+            }
+    </style>
+    <!--<link rel="stylesheet" href="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.css">
+    <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>-->
+</head>
+<body>
+    <main class="container">
+        <h1 class="title">PROCURAÇÃO</h1>
+        <article>
+            <p><strong id="nome">[nome do cotista]</strong>, inscrito no <strong>CPF/MF sob o n.</strong> <strong id="cpf"></strong> ("Outorgante"), nomeia e constitui como seu procurador a <strong>XP INVESTIMENTOS CORRETORA DE CÂMBIO, TÍTULOS E VALORES MOBILIÁRIOS S.A.</strong>, inscrita no CNPJ/MF sob o nº 02.332.886/0001-04 (“XP” ou “Administrador”), para representar a Outorgante, na qualidade de cotista do <strong>MAXI RENDA FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII</strong>, fundo de investimento inscrito no CNPJ/MF sob o nº 97.521.255/0001-25 (“Fundo”), administrado pelo Administrador, na Assembleia Geral Extraordinária do Fundo, a ser realizada na Cidade de São Paulo, no Estado de São Paulo, na Av. Presidente Juscelino Kubitschek, 1909 – Torre Sul, 30º Andar – Auditório, Vila Olímpia, São Paulo - SP, em primeira convocação no dia 30 de novembro de 2018 às 16:00 horas (“Assembleia”), ou, caso não seja instala em primeira convocação por qualquer motivo, em sua segunda convocação, bem como em qualquer outra Assembleia Geral Extraordinária do Fundo em que as matérias da Ordem do Dia sejam aquelas constantes do item(i) abaixo e desde que realizada durante a vigência desta Procuração, podendo desempenhar as seguintes ações:</p>
+
+            <p><strong>(i)</strong> Representar o (a) Outorgante na qualidade de cotista do Fundo, na Assembleia (bem como em qualquer outra Assembleia Geral Extraordinária do Fundo em que as matérias da ordem do dia sejam aquelas constantes abaixo e desde que realizada durante a vigência desta Procuração), e proferir voto relativo aos itens da Ordem do Dia em estrita conformidade com as orientações de voto estabelecidas a seguir:</p>
+
+            <table id="tbPerguntas">
+                <tbody>
+                    <tr>
+                        <th class="bg-light">Ordem do dia</th>
+                        <th class="bg-dark">A Favor</th>
+                        <th class="bg-dark">Contra</th>
+                        <th class="bg-dark">Abstenção</th>
+                    </tr>
+                    <tr id="__trPergunta__">
+                        <td>
+                            <p>
+                                <strong id="__NumeroPergunta__X">1</strong>
+                                <br>
+                                <strong id="__Pergunta__X">[Descrição Pergunta]</strong>
+                            </p>
+                        </td>
+                        <td>
+                            <label for="favor1">
+                                <input type="radio" id="1favor" name="__IdPergunta__X" value="favor">
+                                <div class="check"></div>
+                            </label>
+                        </td>
+                        <td>
+                            <label for="contra1">
+                                <input type="radio" id="1contra" name="__IdPergunta__X" value="contra">
+                                <div class="check"></div>
+                            </label>
+                        </td>
+                        <td>
+                            <label for="abstem1">
+                                <input type="radio" id="1abstem" name="__IdPergunta__X" value="abstem">
+                                <div class="check"></div>
+                            </label>
+                        </td>
+                    </tr>
+                    <!--<tr>
+                        <td>
+                            <p>
+                                <strong>1</strong>
+                                <br>
+                                <strong>Aprovação da Substituição do Gestor, da XP Gestão de Recursos Ltda. Pela XP Vista Asset Management Ltda. e a consequente alteração do Regulamento do Fundo, conforme descrito na Proposta do Administrador.</strong>
+                            </p>
+                        </td>
+                        <td>
+                            <label for="favor1">
+                                <input type="radio" id="favor1" name="Questao1" value="favor">
+                                <div class="check"></div>
+                            </label>
+                        </td>
+                        <td>
+                            <label for="contra1">
+                                <input type="radio" id="contra1" name="Questao1" value="contra">
+                                <div class="check"></div>
+                            </label>
+                        </td>
+                        <td>
+                            <label for="abstem1">
+                                <input type="radio" id="abstem1" name="Questao1" value="abstem">
+                                <div class="check"></div>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                <strong>2</strong>
+                                <br>
+                                <strong>Aprovação da Substituição do Administrador do Fundo, da XP Investimento Corretora de Cambio Títulos e Valores Mobiliários S.A. pelo BTG Pactual Serviços Financeiros S.A. DTVM e a consequente alteração do Regulamento do Fundo, conforme descrito na Proposta do Administrador</strong>
+                            </p>
+                        </td>
+                        <td>
+                            <label for="favor2">
+                                <input type="radio" id="favor2" name="Questao2" value="favor">
+                                <div class="check"></div>
+                            </label>
+                        </td>
+                        <td>
+                            <label for="contra2">
+                                <input type="radio" id="contra2" name="Questao2" value="contra">
+                                <div class="check"></div>
+                            </label>
+                        </td>
+                        <td>
+                            <label for="abstem2">
+                                <input type="radio" id="abstem2" name="Questao2" value="abstem">
+                                <div class="check"></div>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                <strong>3</strong>
+                                <br>
+                                <strong>Alteração do Regulamento do Fundo, conforme descrito na Proposta do Administrador, prevendo alteração do Quórum para Aprovação de Novas Emissões, além de ajustes de redação tendo em vista a combinação e negócios da BM&amp;FBOVESPA e da CETIP que resultou na B3 S.A. – Brasil, Bolsa, Balcão, com substituição dos termos aplicáveis;</strong>
+                            </p>
+                        </td>
+                        <td>
+                            <label for="favor3">
+                                <input type="radio" id="favor3" name="Questao3" value="favor">
+                                <div class="check"></div>
+                            </label>
+                        </td>
+                        <td>
+                            <label for="contra3">
+                                <input type="radio" id="contra3" name="Questao3" value="contra">
+                                <div class="check"></div>
+                            </label>
+                        </td>
+                        <td>
+                            <label for="abstem3">
+                                <input type="radio" id="abstem3" name="Questao3" value="abstem">
+                                <div class="check"></div>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                <strong>4</strong>
+                                <br>
+                                <strong>Aprovar a contratação da <strong>XP Investimentos Corretora de Câmbio, Títulos e Valores Mobiliários S.A.</strong> para o exercício da função de formador de mercado, desde que seja aprovada a substituição do administrador conforme item 2 acima, desde que a cobrança dos honorários da prestação de serviços desse formador de mercado não implique aumento de custos aos cotistas.</strong>
+                            </p>
+                        </td>
+                        <td>
+                            <label for="favor4">
+                                <input type="radio" id="favor4" name="Questao4" value="favor">
+                                <div class="check"></div>
+                            </label>
+                        </td>
+                        <td>
+                            <label for="contra4">
+                                <input type="radio" id="contra4" name="Questao4" value="contra">
+                                <div class="check"></div>
+                            </label>
+                        </td>
+                        <td>
+                            <label for="abstem4">
+                                <input type="radio" id="abstem4" name="Questao4" value="abstem">
+                                <div class="check"></div>
+                            </label>
+                        </td>
+                    </tr>-->
+                </tbody>
+            </table>
+
+            <p><strong>(ii)</strong>	Assinar o Livro de Registro de Presença de Cotistas e a ata da Assembleia, sem prejuízo de a apresentação desta procuração ser válida como presença na Assembleia; e</p>
+
+            <p>
+                <strong>(iii)</strong>	Substabelecer todos ou parte dos poderes aqui conferidos.
+                Tenho pleno conhecimento da proposta do Administrador relacionada à Assembleia, de modo que as instruções de voto acima descritas foram realizadas de acordo com a referida proposta.
+                Declaro que não estou impedido de votar na Assembleia, tendo em vista não estar enquadrado no rol de pessoas previsto no artigo 24, §1º, da Instrução da Comissão de Valores Mobiliários nº 472, de 31 de outubro de 2008, conforme alterada.
+                O presente mandato será válido pelo prazo de 1 (um ano) contados da presente data, ficando a representação, no entanto, restrita à orientação de voto do(a) Outorgante no tocante às referidas matérias.
+                O(A) Outorgado(a) tem poderes para votar com a totalidade das cotas de titularidade do(a) Outorgante.
+                O(A) Outorgado(a) tem poderes limitados ao comparecimento à Assembleia e ao lançamento de voto em conformidade com a orientação de voto acima, não tendo direito ou obrigação de tomar quaisquer outras medidas que não sejam necessárias ao exato cumprimento deste mandato.
+            </p>
+        </article>
+        <article class="content-center">
+            <p>(O restante da página foi intencionalmente deixado em branco.)</p>
+            <p>(Pagina de assinaturas da Procuração, outorgada em <span class="dia">9</span> de <span class="mes">Outubro</span> de <span class="ano">2018</span></p>
+            <p>
+                <span class="dia">9</span> de
+                <span class="mes">Outubro</span> de
+                <span class="ano">2018</span>
+            </p>
+        </article>
+        <button onclick="Interaction(&#39;approved&#39;)">
+            Assinar e Enviar
+        </button>
+        <button onclick="fecharJanela(&#39;canceled&#39;)">
+            Cancelar
+        </button>
+        <div class="modal">
+            <p class="modal__text"></p>
+            <button class="modal__close">Entendi</button>
+        </div>
+    </main>
+    <script>
+        (function () {
+            var nomeMes = function (mes) {
+                meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+                return meses[mes.getMonth()];
+            };
+            var date = [].slice.call(document.querySelectorAll('.dia'));
+            var mes = [].slice.call(document.querySelectorAll('.mes'));
+            var ano = [].slice.call(document.querySelectorAll('.ano'));
+
+            var valueDate = new Date();
+            var valueDia = valueDate.getDate();
+            var valueMes = nomeMes(valueDate);
+            var valueAno = valueDate.getFullYear();
+
+            date.forEach(e => e.innerText = valueDia);
+            mes.forEach(e => e.innerText = valueMes);
+            ano.forEach(e => e.innerText = valueAno);
+
+            //UpdateValues('{ "ADHESIONID": "9f4621f3-9dc3-4863-82e8-fcf42fa5841f", "StartValidityDate": "0001-01-01T00:00:00", "EndValidityDate": "2018-11-09T15:27:33.84", "CUSTOMERCODE": 2559306, "CUSTOMERDOCUMENTNUMBER": "18236915875", "CUSTOMERNAME": "Sérgio Alves", "ADHESIONDATE": "0001-01-01T00:00:00", "CUSTOMERIP": null, "QUESTIONS": [{ "QUESTION_ID": "3373afb2-0eb7-400e-abb7-26be93dc0b51", "TERM_ID": "30f32219-0d1d-4f6b-a523-ff5bff1325bb", "QUESTION_DESCRIPTION": "PERGUNTA 1?" }, { "QUESTION_ID": "538f764b-20fa-462b-bb62-27974f4397dc", "TERM_ID": "30f32219-0d1d-4f6b-a523-ff5bff1325bb", "QUESTION_DESCRIPTION": "PERGUNTA 2?" }, { "QUESTION_ID": "3d32354a-943f-489e-81ad-9cad348aec92", "TERM_ID": "30f32219-0d1d-4f6b-a523-ff5bff1325bb", "QUESTION_DESCRIPTION": "PERGUNTA 3?" }, { "QUESTION_ID": "f6f66f92-3edd-4729-9f18-c39f74050247", "TERM_ID": "30f32219-0d1d-4f6b-a523-ff5bff1325bb", "QUESTION_DESCRIPTION": "PERGUNTA 4?" }], "DSTIPOPUSH": "FIIS" }');
+
+        }())
+
+        window.onbeforeunload = fecharJanela
+
+        function fecharJanela() {
+
+            data["CUSTOMERCODE"] = dados.CUSTOMERCODE;
+            data["ADHESIONID"] = dados.ADHESIONID;
+            data["DSTIPOPUSH"] = dados.DSTIPOPUSH;
+            data["CUSTOMERNAME"] = dados.CUSTOMERNAME;
+            data["CUSTOMERDOCUMENTNUMBER"] = dados.CUSTOMERDOCUMENTNUMBER;
+            data["STATUS"] = "CANCELED";
+
+            document.location = "app://?state=" + state + "&edited=true&data=" + JSON.stringify(data);
+        }
+
+        var modal = function (text) {
+            var modal = document.querySelector('.modal');
+            var textModal = modal.querySelector('.modal__text');
+            var buttonClose = modal.querySelector('.modal__close');
+            textModal.innerHTML = text;
+
+            modal.classList.add('show');
+            buttonClose.addEventListener('click', function () {
+                modal.classList.remove('show');
+            });
+        };
+
+        var dados = {};
+        function Interaction(state) {
+            var questoes = [].slice.call(document.querySelectorAll('input[type="radio"]'));
+            var data = {};
+            var checks = 0;
+
+            questoes.forEach(function (element) {
+                if (element.checked) {
+                    data[element.name] = element.value;
+                    checks += 1;
+                }
+            });
+
+            if (checks < 4) {
+                modal("Por favor, preencha todas as questões.");
+                return;
+            }
+
+            //data["IdCliente"] = dados.IdCliente;
+            //data["Id"] = dados.Id;
+            //data["Nome"] = dados.Nome;
+            //data["CPF"] = dados.CPF;
+            data["CUSTOMERCODE"] = dados.CUSTOMERCODE;
+            data["ADHESIONID"] = dados.ADHESIONID;
+            data["DSTIPOPUSH"] = dados.DSTIPOPUSH;
+            data["CUSTOMERNAME"] = dados.CUSTOMERNAME;
+            data["CUSTOMERDOCUMENTNUMBER"] = dados.CUSTOMERDOCUMENTNUMBER;
+            data["STATUS"] = "APPROVED";
+
+
+            document.location = "app://?state=" + state + "&edited=true&data=" + JSON.stringify(data);
+        }
+
+        function UpdateValues(values) {
+            //break;
+            
+            var json = JSON.parse(values);
+            var nome = json.CUSTOMERNAME;
+            var cpf = json.CUSTOMERDOCUMENTNUMBER;
+            var perguntas = json.QUESTIONS;
+            dados = json;
+
+            //ATUALIZA NOME E CPF DO CLIENTE
+            document.getElementById('nome').innerText = nome;
+            document.getElementById('cpf').innerText = cpf;
+
+
+            //UTILIZA A QUANTIDADE DE PERGUNTAS PARA REPLICAR AS LINHAS DA TABELA
+            for (var i = 0; i < perguntas.length; i++) {
+
+                var table = document.getElementById("tbPerguntas");
+                var trPergunta = document.getElementById("__trPergunta__");
+                var clone = trPergunta.cloneNode(true);
+                table.appendChild(clone);                
+            }            
+
+            //ATUALIZA O NAME DOS OBJETOS PARA PEGAR A RESPOSTA NO RETORNO
+            var table = document.getElementById("tbPerguntas");            
+
+            var tr = document.getElementsByTagName("tr")[1];            
+            tr.removeAttribute("id");
+
+            var tr = document.getElementsByTagName("tr")[2];
+            tr.removeAttribute("id");
+
+            var tr = document.getElementsByTagName("tr")[3];
+            tr.removeAttribute("id");
+
+
+            var tr = document.getElementsByTagName("tr")[4];
+            tr.removeAttribute("id");
+
+            for (var i = 0, row; row = table.rows[i]; i++) {
+                if (i > 0) {
+                    for (var j = 0, col; col = row.cells[j]; j++) {                             
+
+                        if (j > 0) {
+
+                            if (j == 1) {
+                                var labelTd = row.cells[j].getElementsByTagName('label')[0];
+                                labelTd.setAttribute("for", "afavorX".replace("X", i));
+                            }
+                            else if (j == 2) {
+                                var labelTd = row.cells[j].getElementsByTagName('label')[0];
+                                labelTd.setAttribute("for", "contraX".replace("X", i));
+                            }
+                            else if (j == 3) {
+                                var labelTd = row.cells[j].getElementsByTagName('label')[0];
+                                labelTd.setAttribute("for", "abstemX".replace("X", i));
+                            }
+
+                            if (i <= perguntas.length) {
+                                //ATUALIZA NAME DO OBJETO
+                                var radio = row.cells[j].getElementsByTagName('input')[0];
+                                radio.setAttribute("name", perguntas[i - 1].QUESTION_ID);
+                                radio.setAttribute("id", perguntas[i - 1].QUESTION_ID);
+                            }
+                        }
+                        else {
+                            if (i <= perguntas.length) {
+                                //ATUALIZA NUMERO DA PERGUNTA
+                                var numeroPergunta = row.cells[j].getElementsByTagName('strong')[j];
+                                numeroPergunta.innerText = i;
+                                numeroPergunta.setAttribute("id", "numeroPergunta" + "_" + i);
+
+                                //ATUALIZA DESCRIÇÃO DA PERGUNTA
+                                var descricaoPergunta = row.cells[j].getElementsByTagName('strong')[j + 1];
+                                descricaoPergunta.innerText = perguntas[i - 1].QUESTION_DESCRIPTION;
+                                descricaoPergunta.setAttribute("id", "descricaoPergunta" + "_" + i);
+                            }
+                        }
+                    }
+                }                  
+            }
+
+            //APAGA LINHA USADA COMO MODELO PARA CRIAR AS OUTRAS LINHAS
+            document.getElementById("tbPerguntas").deleteRow(table.rows.length - 1);            
+            //document.getElementById("f6f66f92-3edd-4729-9f18-c39f74050247_1").checked = true;
+            
+        }
+    </script>
+</body>
+</html>
